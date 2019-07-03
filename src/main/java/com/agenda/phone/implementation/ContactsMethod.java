@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders= "*")
 public class ContactsMethod {
 
     @Autowired
@@ -44,8 +45,8 @@ public class ContactsMethod {
             Contacts contacts = getContactDb.get();
 
             contacts.setFirstName(contactsDTO.getFirstName());
-            contacts.setLastName(contacts.getLastName());
-            contacts.setNumberPhone(contacts.getNumberPhone());
+            contacts.setLastName(contactsDTO.getLastName());
+            contacts.setNumberPhone(contactsDTO.getNumberPhone());
             return contactsRepository.save(contacts).toContactsDTO();
         } else {
             return  null;
@@ -53,7 +54,11 @@ public class ContactsMethod {
 
     }
 
-
-
+    @CrossOrigin("*")
+    @DeleteMapping("/deletecontact/{id}")
+	public ContactsDTO deleteContact(@PathVariable Long id) {
+    	contactsRepository.deleteById( id );
+    	return null;
+    }
 
 }
