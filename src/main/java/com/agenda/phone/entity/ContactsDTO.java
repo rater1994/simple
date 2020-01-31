@@ -6,7 +6,10 @@ public class ContactsDTO {
     private String lastName;
     private String numberPhone;
 
-
+    /**
+     *
+     * @return
+     */
 
     public Long getId() {
         return id;
