@@ -19,7 +19,9 @@ public class ContactsMethod {
     @Autowired
     private ContactsRepository contactsRepository;
 
-
+/*
+* Added test
+* */
     @GetMapping("/getallcontacts")
     public List<Contacts> getAllContacts() {
         return new ArrayList<>(contactsRepository.findAll());
